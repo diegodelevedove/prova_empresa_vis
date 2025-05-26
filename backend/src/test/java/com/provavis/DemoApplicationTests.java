@@ -1,5 +1,6 @@
 package com.provavis;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -22,6 +23,9 @@ class DemoApplicationTests {
 		String prefixo = "";
 		Stream<String> anagramaResult = Stream.of("");
 		anagrama.generateAnagrama(prefixo, palavra);
+		when(anagrama.generateAnagrama(prefixo, palavra)).thenReturn(anagramaResult);
+		verify(anagrama).generateAnagrama(prefixo, palavra);
+		assertThat(anagrama.equals(anagramaResult));
 		
 		
 	
