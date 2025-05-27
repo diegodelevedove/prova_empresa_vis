@@ -13,16 +13,22 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 	 
 		@Bean
-	    public SecurityFilterChain   securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+	    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 	    			httpSecurity
-	                .csrf(csrf -> csrf.disable())
+	                .csrf(csrf -> csrf.disable())	                
 	                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-	                .authorizeHttpRequests(authorize -> authorize	                                                
-	                        .requestMatchers(HttpMethod.GET, "/backend").permitAll()	                        
-	                        .anyRequest().authenticated());
+	                .authorizeHttpRequests(authorize -> authorize	                		
+	                        .requestMatchers(HttpMethod.GET, "/backend").permitAll()    
+	                        .requestMatchers("/h2-console/**").permitAll()	                                                
+	                        .requestMatchers("/h2-console/login.do?jsessionid=**").permitAll()	                        
+	                        .anyRequest().authenticated())
+	                		.formLogin(formLogin -> formLogin
+	                        .loginPage("/login")
+	                        .permitAll());
 	    			return httpSecurity.build();
 	                
 	    }
 	
-	
+		
+		
 }

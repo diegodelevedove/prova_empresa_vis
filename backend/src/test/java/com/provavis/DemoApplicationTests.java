@@ -23,9 +23,10 @@ class DemoApplicationTests {
 		String prefixo = "";
 		Stream<String> anagramaResult = Stream.of("");
 		anagrama.generateAnagrama(prefixo, palavra);
-		when(anagrama.generateAnagrama(prefixo, palavra)).thenReturn(anagramaResult);
+		//when(anagrama.generateAnagrama(prefixo, palavra)).thenReturn(anagramaResult);
 		verify(anagrama).generateAnagrama(prefixo, palavra);
-		assertThat(anagrama.equals(anagramaResult));
+		assertThat(anagrama.generateAnagrama(prefixo, palavra).equals(anagramaResult));
+		
 		
 		
 	
