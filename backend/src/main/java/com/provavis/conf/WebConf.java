@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class WebConf implements WebMvcConfigurer {
 	
-	//Apenas para a avaliação mas não para produção	
+	//Configuração para teste, configuração mais robusta deve ser feita em produção.
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
         corsRegistry.addMapping("/**")

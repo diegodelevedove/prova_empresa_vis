@@ -3,22 +3,13 @@ package com.provavis.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.annotation.Nonnull;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name="conta")
+//Exemplificando o hashCode e equals
 public class Conta implements Serializable {	
 	
 	private static final long serialVersionUID = 1L;
-	
-	@Id
+		
 	private Long id;
-	@Nonnull
-	private Integer numeroConta;
-	@Nonnull
+	private Integer numeroConta;	
 	private String titular;
 	
 	public Conta(){};

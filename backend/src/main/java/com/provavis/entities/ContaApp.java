@@ -1,5 +1,6 @@
 package com.provavis.entities;
 
+//Exemplificando o hashCode e equals
 public class ContaApp {
 
 	public static void main(String args[]) {
