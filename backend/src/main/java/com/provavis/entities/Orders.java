@@ -5,9 +5,12 @@ import java.util.Date;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,29 +22,38 @@ public class Orders implements Serializable {
 	@Id
 	private Long id;
 	@JsonFormat(pattern = "dd/MM/yyyy : HH/mm")
-	private Date order_date;
+	private Date orderDate;
 	private Integer amount;
+	
+	@JsonIgnore
+	@ManyToOne
 	private SalesPerson salesPerson;
-	private Orders orders;
+	
+	@JsonIgnore
+	@ManyToOne	
+	private Customer customer;
 	
 	public Orders() {}	
 
-	public Orders(Long id, Date order_date, Integer amount, SalesPerson salesPerson, Orders orders) {
+	public Orders(Long id, Date orderDate,SalesPerson salesPerson, Customer customer,Integer amount) {
 		super();
 		this.id = id;
-		this.order_date = order_date;
-		this.amount = amount;
+		this.orderDate = orderDate;		
 		this.salesPerson = salesPerson;
-		this.orders = orders;
+		this.customer = customer;
+		this.amount = amount;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-
-	public Date getOrder_date() {
-		return order_date;
+	public Date getOrderDate() {
+		return orderDate;
 	}
 
-	public void setOrder_date(Date order_date) {
-		this.order_date = order_date;
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public Integer getAmount() {

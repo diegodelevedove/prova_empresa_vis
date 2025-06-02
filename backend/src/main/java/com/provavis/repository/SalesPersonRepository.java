@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.provavis.entities.SalesPerson;
 
 @Repository
-public interface SalersPersonRepository extends JpaRepository<SalesPerson, Long> {
+public interface SalesPersonRepository extends JpaRepository<SalesPerson, Long> {
 
 }

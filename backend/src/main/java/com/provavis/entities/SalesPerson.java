@@ -27,6 +27,10 @@ public class SalesPerson implements Serializable {
 		this.salary = salary;
 	}
 
+	public Long setId(Long id) {
+		return id;
+	}
+	
 	public Long getId() {
 		return id;
 	}
