@@ -1,5 +1,7 @@
 package com.provavis.service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +38,10 @@ public class SalesCustomerOrdersService {
 		return salesPersonRepository.findById(id);
 	}
 	
-	public Customer insertCustomer(Customer customer) {
-		customer.setId(null);
-		return customerRepository.save(customer);
+	public List<Customer> insertCustomer(List<Customer> customer) {
+		//customer.setId(null);
+		return customerRepository.saveAll(customer);
+		
 	}
 	
 	public Optional<Customer> findById_customer(Long id){

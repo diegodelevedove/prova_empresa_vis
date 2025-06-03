@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,6 +22,7 @@ public class Orders implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@JsonFormat(pattern = "dd/MM/yyyy : HH/mm")
 	private Date orderDate;
@@ -27,10 +30,12 @@ public class Orders implements Serializable {
 	
 	@JsonIgnore
 	@ManyToOne
+	@JoinColumn(name = "salesPerson_id")
 	private SalesPerson salesPerson;
 	
 	@JsonIgnore
 	@ManyToOne	
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
 	public Orders() {}	
