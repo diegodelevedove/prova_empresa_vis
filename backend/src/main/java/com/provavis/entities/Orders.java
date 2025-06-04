@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -23,8 +22,7 @@ public class Orders implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	@JsonFormat(pattern = "dd/MM/yyyy : HH/mm")
+	private Long id;	
 	private Date orderDate;
 	private Integer amount;
 	
@@ -40,12 +38,17 @@ public class Orders implements Serializable {
 	
 	public Orders() {}	
 
-	public Orders(Long id, Date orderDate,SalesPerson salesPerson, Customer customer,Integer amount) {
+	public Orders(Long id, 
+			Date orderDate,
+			Customer customer,
+			SalesPerson salesPerson,
+			Integer amount) 
+	{
 		super();
 		this.id = id;
-		this.orderDate = orderDate;		
-		this.salesPerson = salesPerson;
+		this.orderDate = orderDate;	
 		this.customer = customer;
+		this.salesPerson = salesPerson;		
 		this.amount = amount;
 	}
 	

@@ -29,17 +29,17 @@ public class SalesCustomerOrdersService {
 	
 	
 	@Transactional
-	public SalesPerson insertSales(SalesPerson salesPerson) {
-		salesPerson.setId(null);		
-		return salesPersonRepository.save(salesPerson);
+	public List<SalesPerson> insertSales(List<SalesPerson> salesPerson) {				
+		return salesPersonRepository.saveAll(salesPerson);
 	}
 	
 	public Optional<SalesPerson> findById_sales(Long id) {
 		return salesPersonRepository.findById(id);
 	}
 	
+	@Transactional
 	public List<Customer> insertCustomer(List<Customer> customer) {
-		//customer.setId(null);
+		//customer.setId(null); verificar depois se deu problema no update
 		return customerRepository.saveAll(customer);
 		
 	}
@@ -48,9 +48,10 @@ public class SalesCustomerOrdersService {
 		return customerRepository.findById(id);
 	}
 	
-	public Orders insertOrder(Orders orders) {
-		orders.setId(null);
-		return ordersRepository.save(orders);
+	@Transactional
+	public List<Orders> insertOrder(List<Orders> orders) {
+		//orders.setId(null);
+		return ordersRepository.saveAll(orders);
 	}
 	
 	public Optional<Customer> findById_orders(Long id){
