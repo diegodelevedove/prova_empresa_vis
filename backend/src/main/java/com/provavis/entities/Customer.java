@@ -24,7 +24,7 @@ public class Customer implements Serializable {
 	private Long id;
 	private String name;
 	private String city;
-	private INDUSTRY_TYPE_ENUM industry_type;
+	private String industry_type;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "customer") //@de onde sai pra onde vai
@@ -32,7 +32,7 @@ public class Customer implements Serializable {
 	
 	public Customer() {}
 
-	public Customer(Long id, String name, String city, INDUSTRY_TYPE_ENUM industry_type) {
+	public Customer(Long id, String name, String city, String industry_type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -61,11 +61,11 @@ public class Customer implements Serializable {
 		this.city = city;
 	}
 
-	public INDUSTRY_TYPE_ENUM getIndustry_type() {
+	public String getIndustry_type() {
 		return industry_type;
 	}
 
-	public void setIndustry_type(INDUSTRY_TYPE_ENUM industry_type) {
+	public void setIndustry_type(String industry_type) {
 		this.industry_type = industry_type;
 	}
 

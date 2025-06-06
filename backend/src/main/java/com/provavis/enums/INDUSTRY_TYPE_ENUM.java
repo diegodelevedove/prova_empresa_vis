@@ -5,7 +5,7 @@ package com.provavis.enums;
 public enum INDUSTRY_TYPE_ENUM {
 
 	J(0,"J"),
-	B(1,"Quitado");	
+	B(1,"B");	
 	
 	private Integer codigo;
 	private String descricao;

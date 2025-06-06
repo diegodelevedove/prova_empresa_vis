@@ -29,10 +29,10 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Customer customer1 = new Customer(null,"Samsonic","Pleasant", INDUSTRY_TYPE_ENUM.J); 
-		Customer customer2 = new Customer(null,"Panasung","OakTwon", INDUSTRY_TYPE_ENUM.J); 
-		Customer customer3 = new Customer(null,"Samony","Jackson", INDUSTRY_TYPE_ENUM.B); 
-		Customer customer4 = new Customer(null,"Orange","Jackson", INDUSTRY_TYPE_ENUM.B);
+		Customer customer1 = new Customer(null,"Samsonic","Pleasant", INDUSTRY_TYPE_ENUM.J.getDescricao()); 
+		Customer customer2 = new Customer(null,"Panasung","OakTwon", INDUSTRY_TYPE_ENUM.J.getDescricao()); 
+		Customer customer3 = new Customer(null,"Samony","Jackson", INDUSTRY_TYPE_ENUM.B.getDescricao()); 
+		Customer customer4 = new Customer(null,"Orange","Jackson", INDUSTRY_TYPE_ENUM.B.getDescricao());
 		
 		List<Customer> customers = Arrays.asList(customer1,customer2,customer3,customer4);		
 		salesCustomerOrdersService.insertCustomer(customers);
@@ -55,13 +55,13 @@ public class DemoApplication implements CommandLineRunner {
 		salesCustomerOrdersService.insertSales(salesPerson);	
 		SimpleDateFormat smdf = new SimpleDateFormat("MM/dd/yyyy");	
 		
-		Orders orders1 = new Orders(null,smdf.parse("8/2/96"),customer1,salesPerson2,540);
-		Orders orders2 = new Orders(null,smdf.parse("1/30/99"),customer1,salesPerson5,540);
-		Orders orders3 = new Orders(null,smdf.parse("7/14/95"),customer4,salesPerson1,540);
-		Orders orders4 = new Orders(null,smdf.parse("1/29/98"),customer3,salesPerson1,540);
-		Orders orders5 = new Orders(null,smdf.parse("2/3/98"),customer1,salesPerson1,540);
-		Orders orders6 = new Orders(null,smdf.parse("3/2/98"),customer1,salesPerson1,540);
-		Orders orders7 = new Orders(null,smdf.parse("5/6/98"),customer1,salesPerson1,540);
+		Orders orders1 = new Orders(null,smdf.parse("08/02/1996"),customer1,salesPerson2,540);
+		Orders orders2 = new Orders(null,smdf.parse("01/30/1999"),customer1,salesPerson5,1800);
+		Orders orders3 = new Orders(null,smdf.parse("07/14/1995"),customer4,salesPerson1,460);
+		Orders orders4 = new Orders(null,smdf.parse("01/29/1998"),customer3,salesPerson2,2400);
+		Orders orders5 = new Orders(null,smdf.parse("02/03/1998"),customer2,salesPerson4,600);
+		Orders orders6 = new Orders(null,smdf.parse("03/02/1998"),customer2,salesPerson4,720);
+		Orders orders7 = new Orders(null,smdf.parse("05/06/1998"),customer4,salesPerson4,150);
 		
 		List<Orders> orders = Arrays.asList(orders1,orders2,orders3,orders4,orders5,orders6,orders7);		
 		salesCustomerOrdersService.insertOrder(orders); 
