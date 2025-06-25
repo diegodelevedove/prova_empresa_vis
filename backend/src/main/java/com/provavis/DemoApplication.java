@@ -66,6 +66,27 @@ public class DemoApplication implements CommandLineRunner {
 		List<Orders> orders = Arrays.asList(orders1,orders2,orders3,orders4,orders5,orders6,orders7);		
 		salesCustomerOrdersService.insertOrder(orders); 
 		
+		
+		/*
+		 * Querys da prova:
+		 * Given the tables above, write the SQL query that: 
+
+			a. Returns the names of all Salesperson that don’t have any order with Samsonic. 
+			SELECT * FROM ORDERS WHERE CUSTOMER_ID <> 4;
+			b. Updates the names of Salesperson that have 2 or more orders. It’s necessary to add an ‘*’ in the end of the name. 
+			SELECT SALES_PERSON.NAME, ORDERS.SALES_PERSON_ID  FROM SALES_PERSON INNER JOIN ORDERS ON ORDERS.SALES_PERSON_ID = SALES_PERSON.ID WHERE SALES_PERSON_ID IN (SELECT SALES_PERSON_ID FROM ORDERS GROUP BY SALES_PERSON_ID HAVING COUNT(SALES_PERSON_ID) >= 2) ;
+			**O SELECT DEU CERTO FALTA O UPDATE - FIZ GAMBIARRA MAS PRETENDO FAZER EM UMA QUERy SÓ**
+			UPDATE SALES_PERSON SET NAME = CONCAT(NAME,'*') WHERE ID = 2;
+			UPDATE SALES_PERSON SET NAME = CONCAT(NAME,'*') WHERE ID = 4;
+			Abaixo refatorar pra uma query			
+			UPDATE SALES_PERSON INNER JOIN ORDERS ON ORDERS.SALES_PERSON_ID = SALES_PERSON.ID SET SALES_PERSON.NAME = CONCAT(NAME,'*') WHERE ORDERS.SALES_PERSON_ID IN (SELECT SALES_PERSON_ID FROM ORDERS GROUP BY SALES_PERSON_ID HAVING COUNT(SALES_PERSON_ID) >= 2) ;
+			c. Deletes all Ssalesperson that placed orders to the city of Jackson.
+			DELETE FROM SALES_PERSON WHERE CITY = 'Jackson';		
+			d. The total sales amount for each Salesperson. If the sales person hasn’t sold anything, show zero.
+			SELECT SALES_PERSON.NAME, ORDERS.SALES_PERSON_ID AS SALES_AMOUNT  FROM SALES_PERSON INNER JOIN ORDERS ON ORDERS.SALES_PERSON_ID = SALES_PERSON.ID WHERE SALES_PERSON_ID IN (SELECT SALES_PERSON_ID FROM ORDERS GROUP BY SALES_PERSON_ID  HAVING COUNT(*)) ;
+			AINDA MELHORANDO A d
+		 * 
+		 */
 	}
 
 }

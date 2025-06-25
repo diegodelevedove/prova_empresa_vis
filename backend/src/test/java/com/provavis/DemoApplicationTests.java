@@ -21,12 +21,13 @@ class DemoApplicationTests {
 		Anagrama anagrama = Mockito.mock(Anagrama.class);
 		String palavra = "arara";
 		String prefixo = "";
+		String palavra2 = "";
 		Stream<String> anagramaResult = Stream.of("");
 		anagrama.generateAnagrama(prefixo, palavra);
 		//when(anagrama.generateAnagrama(prefixo, palavra)).thenReturn(anagramaResult);
 		verify(anagrama).generateAnagrama(prefixo, palavra);
 		assertThat(anagrama.generateAnagrama(prefixo, palavra).equals(anagramaResult));
-		
+		assertThat(anagrama.generateAnagrama(prefixo, palavra2));		
 		
 		
 	
